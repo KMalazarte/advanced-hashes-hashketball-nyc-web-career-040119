@@ -124,10 +124,9 @@ def num_points_scored(player_name)
     team_data[:players].each do |guy, stats|
       if guy== player_name
         return stats[:points]
-     
-end
-end
-end
+      end
+    end
+  end
 end
 
 def shoe_size(player_name)
@@ -135,17 +134,17 @@ def shoe_size(player_name)
     team_data[:players].each do |guy, stats|
       if guy == player_name
         return stats[:shoe]
-end
-end
-end
+      end
+    end
+  end
 end
 
 def team_colors(team_name)
     game_hash.each do |location, team_data|
       if team_name == team_data[:team_name]
         return team_data[:colors]
-end
-end
+      end
+    end
 end
       
 def team_names
@@ -154,10 +153,11 @@ def team_names
     team_data.each do |attribute, data|
       if attribute == :team_name
         teams.push(data)
-end
-end
-end
-teams
+      end
+    end
+  end
+  
+  teams
 end
 
 def player_numbers(team)
@@ -166,20 +166,21 @@ def player_numbers(team)
     if team_data[:team_name] == team
       team_data[:players].each do |guy, num|
         jersey_numbers.push(num[:number])
-end
-end
-end
-jersey_numbers
+      end
+    end
+  end
+
+  jersey_numbers
 end
 
 def player_stats(players_name)
   game_hash.each do |location, team_data|
     team_data[:players].each do |guy, stats|
       if guy.to_s == players_name
-    return stats
-end
-end
-end
+        return stats
+      end
+    end
+  end
 end
 
 def big_shoe_rebounds
@@ -191,16 +192,17 @@ def big_shoe_rebounds
     team_data.each do |attribute, data|
       if attribute == :players
         data.each do |guy, stat|
-      if stat[:shoe] > biggest_shoe
-        big_shoe_name = guy
-        biggest_shoe  = stat[:shoe]
-        boards = stat[:rebounds]
-end
-end
-end
-end
-end
-boards
+          if stat[:shoe] > biggest_shoe
+            big_shoe_name = guy
+            biggest_shoe  = stat[:shoe]
+            boards = stat[:rebounds]
+          end
+        end
+      end
+    end
+  end
+ 
+  boards
 end
 
 def most_points_scored
@@ -214,28 +216,29 @@ def most_points_scored
           if stat[:points] > most_points
             most_points = stat[:points]
             most_pts_name = guy
+          end
+        end
+      end
+    end
   end
-end
-end
-end
-end
-most_pts_name
+
+  most_pts_name
 end
 
 def winning_team
   nets_score = 0
   hornets_score = 0 
-  game_hash.each do |location, team_data|
-    if team_data[:team_name]= "Brooklyn Nets"
-      team_data[:players].each do |guy, stats|
-        nets_score += stats[:points]
-end
+    game_hash.each do |location, team_data|
+     if team_data[:team_name]= "Brooklyn Nets"
+        team_data[:players].each do |guy, stats|
+          nets_score += stats[:points]
+        end
     else 
-     team_data[:team_name]= "Charlotte Hornets"
-      team_data[:players].each do |guy, stats|
-        hornets_score += stats[:points]
-end
-end
+        team_data[:team_name]= "Charlotte Hornets"
+         team_data[:players].each do |guy, stats|
+         hornets_score += stats[:points]
+        end
+    end
 end
 
 if nets_score > hornets_score
@@ -253,10 +256,11 @@ def player_with_longest_name
        longest_name = guy.to_s
       elsif longest_name.length < guy.to_s.length
       longest_name = guy.to_s
-end
-end
-end
-longest_name
+      end
+    end
+  end
+
+  longest_name
 end
 
   
